@@ -1,5 +1,12 @@
 import React from "react";
 
+interface PropsButtons{
+    id: string;
+    type: string;
+    label: string;
+    onClick: React.MouseEventHandler;
+}
+
 interface Props extends React.PropsWithChildren{
     show: boolean;
     title: string;
@@ -10,11 +17,19 @@ const Modal: React.FC<Props> = ({
     show,
     title ,
     children ,
-    onClose
+    onClose,
 }) => {
+    const Buttons:PropsButtons[] = [
+        {id: 'primary',type: 'primary', label: 'Continue', onClick: () => console.log('clicked continue')},
+        { id: 'danger', type: 'danger', label: 'Close', onClick: () =>  console.log('clicked cancel') }
+    ];
     return (
         <>
-            <div className="modal-backdrop show" onClick={onClose} style={{display: show ? 'block' : 'none', opacity: 1,backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+            <div
+                className="modal-backdrop show"
+                onClick={onClose}
+                style={{display: show ? 'block' : 'none', opacity: 1,backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
+            >
                 <div className="modal show" style={{display: show ? 'block' : 'none'}}>
                     <div
                         className="modal-dialog"
@@ -30,6 +45,17 @@ const Modal: React.FC<Props> = ({
                                 </button>
                             </div>
                             {children}
+                            <div className="modal-footer">
+                                {Buttons.map((Button) => (
+                                    <button
+                                        key={Button.id}
+                                        className={`btn btn-${Button.type}`}
+                                        onClick={Button.onClick}
+                                    >
+                                        {Button.label}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

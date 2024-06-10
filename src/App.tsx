@@ -16,11 +16,10 @@ function App() {
 
               <Modal show={showModal}
                      title="Some kinda modal title"
-                     onClose={() => setShowModal(false)}>
+                     onClose={() => setShowModal(false)}
+              >
                   <div className="modal-body text-start">
                       <p>This is modal content</p>
-                  </div>
-                  <div className="modal-footer">
                   </div>
               </Modal>
           </main>
