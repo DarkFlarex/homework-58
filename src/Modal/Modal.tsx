@@ -20,8 +20,8 @@ const Modal: React.FC<Props> = ({
     onClose,
 }) => {
     const Buttons:PropsButtons[] = [
-        {id: 'primary',type: 'primary', label: 'Continue', onClick: () => console.log('clicked continue')},
-        { id: 'danger', type: 'danger', label: 'Close', onClick: () =>  console.log('clicked cancel') }
+        {id: '1',type: 'primary', label: 'Continue', onClick: () => console.log('clicked continue')},
+        { id: '2', type: 'danger', label: 'Close', onClick: onClose}
     ];
     return (
         <>
